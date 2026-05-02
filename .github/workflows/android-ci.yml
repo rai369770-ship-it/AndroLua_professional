@@ -40,13 +40,13 @@ jobs:
       - name: Download Gradle Wrapper jar (if missing)
         run: |
           mkdir -p gradle/wrapper
-          if[ ! -f gradle/wrapper/gradle-wrapper.jar ]; then
+          if [ ! -f gradle/wrapper/gradle-wrapper.jar ]; then
             echo "Downloading Gradle Wrapper jar..."
             # Using v8.7.0 jar as a stable fallback, it will auto-update based on your gradle-wrapper.properties
             curl -L https://raw.githubusercontent.com/gradle/gradle/v8.7.0/gradle/wrapper/gradle-wrapper.jar -o gradle/wrapper/gradle-wrapper.jar
             echo "Verifying downloaded jar..."
             ls -la gradle/wrapper/gradle-wrapper.jar
-            if[ ! -s gradle/wrapper/gradle-wrapper.jar ]; then
+            if [ ! -s gradle/wrapper/gradle-wrapper.jar ]; then
               echo "ERROR: Failed to download or verify Gradle Wrapper jar"
               exit 1
             fi
