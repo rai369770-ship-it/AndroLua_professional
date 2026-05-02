@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.androlua"
-    android:versionCode="4402"
-    android:versionName="4.4.2">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -58,6 +55,7 @@
         <activity
             android:name="com.androlua.Main"
             android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
             android:label="AndroLua+"
             android:launchMode="singleTask"
             android:theme="@style/app_theme">
@@ -118,7 +116,8 @@
         </activity>
         <activity
             android:name="com.androlua.LuaActivity"
-            android:configChanges='orientation|screenSize|keyboardHidden'
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="true"
             android:label="AndroLua+"
             android:theme="@style/app_theme"
             tools:targetApi="lollipop">
@@ -140,7 +139,6 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data android:scheme="file" />
-                <!--data  android:mimeType = "*/*"  /-->
                 <data android:host="*" />
                 <data android:pathPattern=".*\\.lua" />
             </intent-filter>
@@ -180,15 +178,17 @@
         </activity>
         <activity
             android:name="com.androlua.LuaActivityX"
-            android:configChanges='orientation|screenSize|keyboardHidden'
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:documentLaunchMode="intoExisting"
             android:excludeFromRecents="false"
+            android:exported="false"
             android:label="AndroLua+"
             android:screenOrientation="portrait"
             android:theme="@style/app_theme"
             tools:targetApi="lollipop" />
         <activity
             android:name="com.androlua.Welcome"
+            android:exported="true"
             android:label="AndroLua+"
             android:screenOrientation="portrait"
             android:theme="@style/app_theme">
@@ -199,10 +199,12 @@
         </activity>
         <activity
             android:name="com.nirenr.screencapture.ScreenCaptureActivity"
+            android:exported="false"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <service
             android:name="com.androlua.LuaService"
-            android:enabled="true"/>
+            android:enabled="true"
+            android:exported="false" />
         <service
             android:name="com.androlua.LuaAccessibilityService"
             android:enabled="true"
@@ -224,7 +226,7 @@
 
         <provider
             android:name="android.content.FileProvider"
-            android:authorities="com.androlua"
+            android:authorities="${applicationId}"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
