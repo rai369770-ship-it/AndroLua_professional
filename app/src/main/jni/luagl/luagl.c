@@ -721,7 +721,9 @@ static int luagl_hint(lua_State *L)
 /*InitNames () -> none*/
 static int luagl_init_names(lua_State *L)
 {
+#ifndef GL_ES_VERSION_1_0
   glInitNames();
+#endif
   return 0;
 }
 
